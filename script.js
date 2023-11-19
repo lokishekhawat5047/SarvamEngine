@@ -10,7 +10,7 @@ function showSuggestions() {
     if (inputValue !== '') {
         // In a real implementation, you would fetch suggestions from a backend
         // For simplicity, let's use a hardcoded array
-        var suggestions = ['HTML', 'CSS', 'JavaScript', 'Web Development', 'Programming'];
+        var suggestions = ['How to make panneer butter masala', 'Make a presentation on global warming', 'JavaScript', 'Web Development', 'Programming'];
 
         // Display suggestions
         suggestions.forEach(function (suggestion) {
@@ -35,3 +35,19 @@ function luckySearch() {
     // For simplicity, let's log a message to the console
     console.log('Feeling lucky!');
 }
+document.addEventListener('DOMContentLoaded', function () {
+    var searchInput = document.getElementById('searchInput');
+    searchInput.focus();
+});
+
+// Add this function to simulate voice input (you can replace this with actual voice input logic)
+function startVoiceInput() {
+    var searchInput = document.getElementById('searchInput');
+    searchInput.value = 'Voice input placeholder';
+}
+
+// Add this at the end of the script.js file to set focus on search input when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+    var searchInput = document.getElementById('searchInput');
+    searchInput.focus();
+});
