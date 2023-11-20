@@ -63,6 +63,7 @@ function showSuggestions() {
 
     // Clear previous suggestions
     suggestionList.innerHTML = '';
+    //HELLO
 
     // Show suggestions only if there's a search query
     if (inputValue !== '') {
