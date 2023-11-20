@@ -50,4 +50,33 @@ function startVoiceInput() {
 document.addEventListener('DOMContentLoaded', function () {
     var searchInput = document.getElementById('searchInput');
     searchInput.focus();
+    document.addEventListener('click', function (event) {
+        var suggestionList = document.getElementById('suggestionList');
+        var searchInput = document.getElementById('searchInput');
+
+        if (event.target !== searchInput && !searchInput.contains(event.target)) {
+            // Clicked outside the search input, hide the suggestion list
+            suggestionList.style.display = 'none';
+        }
+    });
+document.addEventListener('DOMContentLoaded', function () {
+    // Check for user's preference from localStorage or system preferences
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Apply initial mode
+    setTheme(prefersDarkMode ? 'dark' : 'light');
+
+    // Toggle between light and dark mode
+    document.getElementById('toggleModeButton').addEventListener('click', function () {
+        const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    });
 });
+
+function setTheme(theme) {
+    document.body.classList.remove('light-mode', 'dark-mode');
+    document.body.classList.add(theme + '-mode');
+    localStorage.setItem('theme', theme);
+}
+});    

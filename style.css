@@ -1,9 +1,29 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #181818;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+.light-mode {
+    background-color: #fff;
+    color: #181818;
+}
+
+.dark-mode {
+    background-color: #181818;
+    color: #fff;
+}
+
+.container {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 130px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 
 .container {
     max-width: 900px;
@@ -59,16 +79,18 @@ ul {
     width: 80%;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
 }
 
-
-li {
+#suggestionList li {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     cursor: pointer;
 }
 
-li:hover {
+#suggestionList li:hover {
     background-color: #f4f4f4;
 }
 
