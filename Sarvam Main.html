@@ -8,18 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <center><font style="calibri" size=400px><b>Sarvam</b></font></center>
+        <h1 class="animate-character">Sarvam</h1>
         <div class="search-container">
-        <div class="search-icons">
-            <img src="assests\search.png" alt="Search Icon">
-            <img src="assests\mic.png" alt="Microphone Icon" onclick="startVoiceInput()">
-        </div>
-            <input type="text" id="searchInput" placeholder="Sarvam Search" oninput="showSuggestions()">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Sarvam Search" oninput="showSuggestions()">
+                <div class="search-icons">
+                    <img src="assests/search.png" alt="Search Icon">
+                    <img src="assests/mic.png" alt="Microphone Icon" onclick="startVoiceInput()">
+                </div>
+            </div>
             <ul id="suggestionList"></ul>
         </div>
         <button onclick="performSearch()">Sarvam Search</button>
         <button onclick="luckySearch()">Toofani</button>
-        <button id="toggleModeButton">Toggle Mode</button>
+        <!-- Add toggle switch for light and dark mode -->
+<div class="toggle-container">
+    <input type="checkbox" id="toggleModeSwitch">
+    <label for="toggleModeSwitch" id="toggleModeLabel"></label>
+</div>
+
     </div>
     <script src="script.js"></script>
 </body>

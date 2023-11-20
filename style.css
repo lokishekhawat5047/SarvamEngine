@@ -1,7 +1,108 @@
 body {
     font-family: 'Arial', sans-serif;
+    background-color: #181818;
     margin: 0;
     padding: 0;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    color: transparent;
+    animation: textclip 2s linear infinite;
+}
+
+.light-mode h1 {
+    background-image: linear-gradient(
+        -225deg,
+        #00c6fb 0%,
+        #005bea 29%,
+        #00c6fb 67%,
+        #005bea 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dark-mode h1 {
+    background-image: linear-gradient(
+        -225deg,
+        #231557 0%,
+        #44107a 29%,
+        #ff1361 67%,
+        #fff800 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+/* Add styles for the toggle switch */
+.toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#toggleModeSwitch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    -webkit-appearance: none;
+    background-color: #ccc;
+    outline: none;
+    border-radius: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+#toggleModeSwitch:checked {
+    background-color: #4285f4;
+}
+
+#toggleModeSwitch::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(2px, 2px);
+    transition: transform 0.3s;
+}
+
+#toggleModeSwitch:checked::before {
+    transform: translate(20px, 2px);
+}
+
+#toggleModeLabel {
+    color: #fff; /* Default text color for the toggle label */
+    font-size: 14px;
+    transition: color 0.3s; /* Added transition for smooth color change */
+}
+
+.light-mode #toggleModeLabel {
+    color: #000; /* Adjust the text color for light mode */
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 130px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -15,63 +116,11 @@ body {
     color: #fff;
 }
 
-.container {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 130px;
-    border-radius: 30px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-
-.container {
-    max-width: 900px;
-    margin: 80px auto;
-    background-color: #fff;
-    padding:130px;
-    border-radius: 30px;
-    box-shadow: 2 2 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-.search-container input:hover {
-    background-color: #e0e0e0; /* Change this color to your desired hover color */
-}
-body {
-    scrollbar-width: thin;
-    scrollbar-color: #333 #f8f8f8;
-}
-
-body::-webkit-scrollbar {
-    width: 7px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: #333;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: #f8f8f8;
-}
-
-img {
-    width: 100px;
-    margin-bottom: 20px;
-}
-
 .search-container {
     position: relative;
 }
 
-input {
-    margin-top: 15px;
-    width: 70%;
-    padding: 10px;
-    border-radius: 30px;
-    border: solid;
-}
-
-ul {
+#suggestionList {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -108,13 +157,40 @@ button:hover {
     background-color: #3367d6;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s; /* Added transition for smooth hover effect */
+}
+
+.light-mode .search-bar {
+    background-color: #eee; /* Adjust the background color for light mode */
+}
+
+#searchInput {
+    flex: 1; /* Take up remaining space in the flex container */
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+}
+
+.light-mode #searchInput {
+    color: #333; /* Adjust the text color for light mode */
+}
+
+.search-bar:hover #searchInput,
+.light-mode .search-bar:hover #searchInput {
+    background-color: #444;
+}
+
 .search-icons {
     display: flex;
     align-items: center;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-left: 10px;
 }
 
 .search-icons img {

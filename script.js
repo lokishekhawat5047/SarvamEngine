@@ -1,3 +1,45 @@
+document.addEventListener('DOMContentLoaded', function () {
+    var searchInput = document.getElementById('searchInput');
+    searchInput.focus();
+
+    // Add event listener to hide suggestion list on outside click
+    document.addEventListener('click', function (event) {
+        var suggestionList = document.getElementById('suggestionList');
+        var searchInput = document.getElementById('searchInput');
+
+        if (event.target !== searchInput && !searchInput.contains(event.target)) {
+            // Clicked outside the search input, hide the suggestion list
+            suggestionList.style.display = 'none';
+        }
+    });
+
+    // Check for user's preference from localStorage or system preferences
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Apply initial mode
+setTheme(prefersDarkMode ? 'dark' : 'light');
+
+// Set the default state of the toggle switch
+var toggleModeSwitch = document.getElementById('toggleModeSwitch');
+toggleModeSwitch.checked = prefersDarkMode;
+
+// Toggle between light and dark mode
+toggleModeSwitch.addEventListener('change', function () {
+    const newTheme = toggleModeSwitch.checked ? 'dark' : 'light';
+    setTheme(newTheme);
+});
+});
+
+function setTheme(theme) {
+    document.body.classList.remove('light-mode', 'dark-mode');
+    document.body.classList.add(theme + '-mode');
+    localStorage.setItem('theme', theme);
+
+    // Update label text based on theme
+    var toggleModeLabel = document.getElementById('toggleModeLabel');
+    toggleModeLabel.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+}
+
 function showSuggestions() {
     var input = document.getElementById('searchInput');
     var suggestionList = document.getElementById('suggestionList');
@@ -18,6 +60,9 @@ function showSuggestions() {
             li.textContent = suggestion;
             suggestionList.appendChild(li);
         });
+        suggestionList.style.display = 'block';
+    } else {
+        suggestionList.style.display = 'none';
     }
 }
 
@@ -35,10 +80,6 @@ function luckySearch() {
     // For simplicity, let's log a message to the console
     console.log('Feeling lucky!');
 }
-document.addEventListener('DOMContentLoaded', function () {
-    var searchInput = document.getElementById('searchInput');
-    searchInput.focus();
-});
 
 // Add this function to simulate voice input (you can replace this with actual voice input logic)
 function startVoiceInput() {
@@ -46,37 +87,8 @@ function startVoiceInput() {
     searchInput.value = 'Voice input placeholder';
 }
 
-// Add this at the end of the script.js file to set focus on search input when the page loads
+// Add this at the end of the script.js file to set focus on the search input when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     var searchInput = document.getElementById('searchInput');
     searchInput.focus();
-    document.addEventListener('click', function (event) {
-        var suggestionList = document.getElementById('suggestionList');
-        var searchInput = document.getElementById('searchInput');
-
-        if (event.target !== searchInput && !searchInput.contains(event.target)) {
-            // Clicked outside the search input, hide the suggestion list
-            suggestionList.style.display = 'none';
-        }
-    });
-document.addEventListener('DOMContentLoaded', function () {
-    // Check for user's preference from localStorage or system preferences
-    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // Apply initial mode
-    setTheme(prefersDarkMode ? 'dark' : 'light');
-
-    // Toggle between light and dark mode
-    document.getElementById('toggleModeButton').addEventListener('click', function () {
-        const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
 });
-
-function setTheme(theme) {
-    document.body.classList.remove('light-mode', 'dark-mode');
-    document.body.classList.add(theme + '-mode');
-    localStorage.setItem('theme', theme);
-}
-});    
