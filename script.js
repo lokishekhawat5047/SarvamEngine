@@ -29,6 +29,22 @@ toggleModeSwitch.addEventListener('change', function () {
     setTheme(newTheme);
 });
 });
+// Function to change language
+function changeLanguage() {
+    var languageDropdown = document.getElementById('languageDropdown');
+    var selectedLanguage = languageDropdown.value;
+    
+    // Implement logic to change language based on selectedLanguage
+    console.log('Selected Language:', selectedLanguage);
+}
+
+// Function to toggle theme
+function toggleTheme() {
+    // Implement theme toggle logic here
+    var toggleModeSwitch = document.getElementById('toggleModeSwitch');
+    var newTheme = toggleModeSwitch.checked ? 'dark' : 'light';
+    setTheme(newTheme);
+}
 
 function setTheme(theme) {
     document.body.classList.remove('light-mode', 'dark-mode');
